@@ -16,8 +16,6 @@ class OtpScreen extends StatefulWidget {
 class _OtpScreenState extends State<OtpScreen> {
   final PinController pinController = Get.put(PinController());
   final _formKey = GlobalKey<FormState>();
-
-  // reactive flag for showing validation message
   final RxBool showError = false.obs;
 
   @override

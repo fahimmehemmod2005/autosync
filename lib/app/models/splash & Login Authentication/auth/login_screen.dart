@@ -111,8 +111,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     CustomTextFormField(
+                      obscureText: true,
                         hintText: '*********',
-                      suffix: InkWell(child: Image.asset('assets/icons/eye-off.png',height: 16.h,width: 16.w),onTap: (){},),
+                      suffixIcon: InkWell(child: Image.asset('assets/icons/eye-off.png',height: 16.h,width: 16.w),onTap: (){},),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Password is required";
