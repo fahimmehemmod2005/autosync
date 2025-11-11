@@ -4,21 +4,20 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 import '../../../../../widgets/custom_button.dart';
-import 'otp screen/otp_resend.dart';
-import 'otp screen/pinput_controller.dart';
+import 'forgot screen/otp screen/otp_resend.dart';
+import 'forgot screen/otp screen/pinput_controller.dart';
 
-class OtpScreen extends StatefulWidget {
-  const OtpScreen({super.key});
+class EmailVerificationScreen extends StatefulWidget {
+  const EmailVerificationScreen({super.key});
 
   @override
-  State<OtpScreen> createState() => _OtpScreenState();
+  State<EmailVerificationScreen> createState() => _EmailVerificationScreenState();
 }
 
-class _OtpScreenState extends State<OtpScreen> {
-  final PinController pinController = Get.put(PinController());
+class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
+   final PinController pinController = Get.put(PinController());
   final _formKey = GlobalKey<FormState>();
   final RxBool showError = false.obs;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +58,8 @@ class _OtpScreenState extends State<OtpScreen> {
                           length: 6,
                           onChanged: (value) {
                             pinController.updatePin(value);
+
+                            // hide error message if input becomes valid
                             if (pinController.isPinLengthValid()) {
                               showError.value = false;
                             }
@@ -138,13 +139,13 @@ class _OtpScreenState extends State<OtpScreen> {
 
                     /// --- Send OTP Button ---
                     CustomButton(
-                      text: 'Verify OTP',
+                      text: 'Verify Email',
                       onpress: () {
                         if (!pinController.isPinLengthValid()) {
                           showError.value = true;
                           return;
                         } else if (_formKey.currentState!.validate()) {
-                          Get.toNamed('/resetpass_screen');
+                          Get.toNamed('/login_screen');
                           Get.snackbar(
                             "Success",
                             "Login successfully!",
@@ -157,7 +158,6 @@ class _OtpScreenState extends State<OtpScreen> {
                     ),
                     SizedBox(height: 250.h),
                     OtpResendText(),
-
                   ],
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'package:autosync/app/models/splash%20&%20Login%20Authentication/auth/controller/BirthdayPickerField.dart';
 import 'package:flutter/material.dart';
 import 'package:autosync/widgets/custom_button.dart';
 import 'package:autosync/widgets/custom_textformfield.dart';
@@ -55,9 +56,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           color: const Color(0xffFFFFFF),
                         ),
                         children: [
-                          const TextSpan(
-                            text: "Already have an account?",
-                          ),
+                          const TextSpan(text: "Already have an account?"),
                           TextSpan(
                             text: ' Sign in',
                             style: GoogleFonts.poppins(
@@ -76,49 +75,49 @@ class _SignupScreenState extends State<SignupScreen> {
                       children: [
                         Expanded(
                           child: Text(
-                                                'First Name',
-                                                style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12.sp,
-                          color: const Color(0xff4B5563),
-                                                ),
-                                              ),
+                            'First Name',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12.sp,
+                              color: const Color(0xff4B5563),
+                            ),
+                          ),
                         ),
-                        SizedBox(width: 15,),
-                    Expanded(
-                      child: Text(
-                        'Last Name',
-                        style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12.sp,
-                          color: const Color(0xff4B5563),
+                        SizedBox(width: 15),
+                        Expanded(
+                          child: Text(
+                            'Last Name',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12.sp,
+                              color: const Color(0xff4B5563),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
                       ],
                     ),
                     Row(
                       children: [
                         Expanded(
                           child: CustomTextFormField(
-                          hintText: 'lois',
-                                                validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Enter your First Name";
-                          }
-                                                },
-                                              ),
+                            hintText: 'lois',
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Enter your First Name";
+                              }
+                            },
+                          ),
                         ),
-                        SizedBox(width: 14.w,),
+                        SizedBox(width: 14.w),
                         Expanded(
                           child: CustomTextFormField(
-                          hintText: 'Becket',
-                                                validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Enter your Last Name";
-                          }
-                                                },
-                                              ),
+                            hintText: 'Becket',
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Enter your Last Name";
+                              }
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -131,11 +130,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         color: const Color(0xff4B5563),
                       ),
                     ),
-                    CustomTextFormField(
+                   CustomTextFormField(
                         hintText: 'name@gmail.com',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return null;
+                          return "Email is required";
                         }
                         //  Gmail-only validation
                         final gmailRegex =  RegExp(
@@ -143,7 +142,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         );
 
                         if (!gmailRegex.hasMatch(value)) {
-                          return "Enter a valid Gmail address";
+                          return "Enter a valid Email";
                         }
 
                         return null;
@@ -159,16 +158,19 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     CustomTextFormField(
-                        hintText: '001326922',
+                        hintText: '001234556789',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return null;
+                          return "mobile number is required";
                         }
 
                         //  Bangladeshi mobile number validation
                         final bangladeshPhoneRegex =  RegExp(
                           r'^(?:\+8801|01)[0-9]{9}$',
                         );
+
+                      
+
                         if (!bangladeshPhoneRegex.hasMatch(value)) {
                           return "Enter a valid Bangladeshi phone number";
                         }
@@ -186,7 +188,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     CustomTextFormField(
-                        hintText: 'los angeless',
+                      hintText: 'los angeless',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Enter your Address";
@@ -203,14 +205,22 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     CustomTextFormField(
-                        hintText: 'Zip code',
+                      hintText: 'Zip code',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Enter your zip code';
                         }
                       },
                     ),
-                      SizedBox(height: 15.h),
+                    SizedBox(height: 15.h),
+                    BirthdayPickerField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Birthday is required';
+                        }
+                      },
+                    ),
+                    SizedBox(height: 15.h),
 
                     Text(
                       'New Password',
@@ -222,8 +232,15 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     CustomTextFormField(
                       obscureText: true,
-                        hintText: '*********',
-                      suffixIcon: InkWell(child: Image.asset('assets/icons/eye-off.png',height: 16.h,width: 16.w),onTap: (){},),
+                      hintText: '*********',
+                      suffixIcon: InkWell(
+                        child: Image.asset(
+                          'assets/icons/eye-off.png',
+                          height: 16.h,
+                          width: 16.w,
+                        ),
+                        onTap: () {},
+                      ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Password is required";
@@ -231,9 +248,10 @@ class _SignupScreenState extends State<SignupScreen> {
                           return "Password must be at least 6 characters";
                         }
                         return null;
-                      },),
-                      SizedBox(height: 20.h,),
-                      Text(
+                      },
+                    ),
+                    SizedBox(height: 20.h),
+                    Text(
                       'Confirm Password',
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w500,
@@ -241,10 +259,17 @@ class _SignupScreenState extends State<SignupScreen> {
                         color: const Color(0xff4B5563),
                       ),
                     ),
-                      CustomTextFormField(
-                        obscureText: true,
-                        hintText: '*********',
-                      suffixIcon: InkWell(child: Image.asset('assets/icons/eye-off.png',height: 16.h,width: 16.w),onTap: (){},),
+                    CustomTextFormField(
+                      obscureText: true,
+                      hintText: '*********',
+                      suffixIcon: InkWell(
+                        child: Image.asset(
+                          'assets/icons/eye-off.png',
+                          height: 16.h,
+                          width: 16.w,
+                        ),
+                        onTap: () {},
+                      ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Password is required";
@@ -252,9 +277,11 @@ class _SignupScreenState extends State<SignupScreen> {
                           return "Password must be at least 6 characters";
                         }
                         return null;
-                      },),
+                      },
+                    ),
                     SizedBox(height: 30.h),
-                    CustomButton(text: 'Register',
+                    CustomButton(
+                      text: 'Register',
                       onpress: () {
                         if (_formKey.currentState!.validate()) {
                           Get.snackbar(
@@ -264,7 +291,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             backgroundColor: Colors.white,
                             snackPosition: SnackPosition.TOP,
                           );
-                          Get.toNamed('/login_screen');
+                          Get.toNamed('/emailvrification_screen');
                         } else {
                           Get.snackbar(
                             "Error",
