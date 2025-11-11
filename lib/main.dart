@@ -1,3 +1,4 @@
+import 'package:autosync/app/models/home/bottomNavigatonPages/home.dart';
 import 'package:autosync/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,8 +18,9 @@ class MyApp extends StatelessWidget {
       builder: (_, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'AutoSync',
-        initialRoute: appPages.initialRoute,
-        getPages: appPages.routes,
+        // initialRoute: appPages.initialRoute,
+        // getPages: appPages.routes,
+        home: HomeScreen(),
       ),
     );
   }

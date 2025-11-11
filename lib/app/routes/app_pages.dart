@@ -1,3 +1,4 @@
+import 'package:autosync/app/models/home/main_screen.dart';
 import 'package:autosync/app/models/splash%20&%20Login%20Authentication/auth/email_verification.dart';
 import 'package:autosync/app/models/splash%20&%20Login%20Authentication/auth/forgot%20screen/forgot_screen.dart';
 import 'package:autosync/app/models/splash%20&%20Login%20Authentication/auth/forgot%20screen/otp_screen.dart';
@@ -21,5 +22,6 @@ class appPages {
     GetPage(name: _Paths.otpScreen, page: () => OtpScreen()),
     GetPage(name: _Paths.resetpassScreen, page: () => ResetpassScreen()),
     GetPage(name: _Paths.emailvrificationScreen, page: () => EmailVerificationScreen()),
+    GetPage(name: _Paths.mainScreen, page: () => MainScreen()),   
   ];
 }
