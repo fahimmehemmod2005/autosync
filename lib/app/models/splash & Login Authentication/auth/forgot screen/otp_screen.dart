@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
-
 import '../../../../../widgets/custom_button.dart';
 import 'otp screen/pinput_controller.dart';
 
@@ -18,6 +16,10 @@ class OtpScreen extends StatefulWidget {
 class _OtpScreenState extends State<OtpScreen> {
   final PinController pinController = Get.put(PinController());
   final _formKey = GlobalKey<FormState>();
+
+  // reactive flag for showing validation message
+  final RxBool showError = false.obs;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,14 +28,20 @@ class _OtpScreenState extends State<OtpScreen> {
           key: _formKey,
           child: Stack(
             children: [
-              Image.asset('assets/icons/image.png'),
+              Image.asset(
+                'assets/icons/image.png',
+                fit: BoxFit.cover,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 60.h),
-                    InkWell(onTap: () => Get.back(),child: Image.asset('assets/icons/arrow-left.png'),),
+                    InkWell(
+                      onTap: () => Get.back(),
+                      child: Image.asset('assets/icons/arrow-left.png'),
+                    ),
                     SizedBox(height: 25.h),
                     Text(
                       'Verify Email',
@@ -44,18 +52,27 @@ class _OtpScreenState extends State<OtpScreen> {
                       ),
                     ),
                     SizedBox(height: 140.h),
+
+                    /// --- Pinput field ---
                     Obx(() {
                       return Center(
                         child: Pinput(
                           length: 6,
-                          onChanged: pinController.updatePin, // ✅ fixed name
+                          onChanged: (value) {
+                            pinController.updatePin(value);
+
+                            // hide error message if input becomes valid
+                            if (pinController.isPinLengthValid()) {
+                              showError.value = false;
+                            }
+                          },
                           defaultPinTheme: PinTheme(
                             width: 44.w,
-                            height: 55.h,
+                            height: 50.h,
                             textStyle: GoogleFonts.poppins(
                               fontSize: 22.sp,
                               fontWeight: FontWeight.w600,
-                              color: Colors.white,
+                              color: Colors.grey,
                             ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.r),
@@ -69,11 +86,11 @@ class _OtpScreenState extends State<OtpScreen> {
                           ),
                           focusedPinTheme: PinTheme(
                             width: 44.w,
-                            height: 55.h,
+                            height: 50.h,
                             textStyle: GoogleFonts.poppins(
                               fontSize: 22.sp,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.r),
@@ -85,33 +102,57 @@ class _OtpScreenState extends State<OtpScreen> {
                           ),
                           submittedPinTheme: PinTheme(
                             width: 44.w,
-                            height: 55.h,
+                            height: 50.h,
                             textStyle: GoogleFonts.poppins(
-                              fontSize: 22.sp,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
                             ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.r),
                               border: Border.all(
-                                color: Colors.green,
-                                width: 2,
-                              ),
+                                  color: Colors.grey, width: 2.w),
                             ),
                           ),
                         ),
                       );
                     }),
-                    SizedBox(height: 32.h,),
-                    CustomButton(text: 'Send Otp',
+
+                    /// --- Error Message under Pinput ---
+                    Obx(() {
+                      return Visibility(
+                        visible: showError.value,
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 8.h),
+                          child: Text(
+                            "Please enter a valid OTP",
+                            style: GoogleFonts.poppins(
+                              color: Colors.red,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      );
+                    }),
+
+                    SizedBox(height: 32.h),
+
+                    /// --- Send OTP Button ---
+                    CustomButton(
+                      text: 'Send OTP',
                       onpress: () {
-                        if (_formKey.currentState!.validate()) {
+                        if (!pinController.isPinLengthValid()) {
+                          showError.value = true;
+                          return;
+                        } else if (_formKey.currentState!.validate()) {
                           Get.toNamed('/resetpass_screen');
-                        } else {
                           Get.snackbar(
-                            "Error",
-                            "Please correct all fields",
+                            "Success",
+                            "Login successfully!",
                             colorText: Colors.black,
+                            backgroundColor: Colors.white,
                             snackPosition: SnackPosition.TOP,
                           );
                         }

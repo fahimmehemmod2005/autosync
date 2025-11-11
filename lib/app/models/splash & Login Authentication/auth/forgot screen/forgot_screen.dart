@@ -88,6 +88,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
                             "Error",
                             "Please correct all fields",
                             colorText: Colors.black,
+                            backgroundColor: Colors.white,
                             snackPosition: SnackPosition.TOP,
                           );
                         }

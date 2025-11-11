@@ -112,6 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     CustomTextFormField(
                         hintText: '*********',
+                      suffix: InkWell(child: Image.asset('assets/icons/eye-off.png',height: 16.h,width: 16.w),onTap: (){},),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Password is required";
@@ -166,6 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             "Success",
                             "Login successfully!",
                             colorText: Colors.black,
+                            backgroundColor: Colors.white,
                             snackPosition: SnackPosition.TOP,
                           );
                           Get.toNamed('/main_screen');
@@ -173,6 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Get.snackbar(
                             "Error",
                             "Please correct all fields",
+                            backgroundColor: Colors.white,
                             colorText: Colors.black,
                             snackPosition: SnackPosition.TOP,
                           );

@@ -1,18 +1,13 @@
 import 'package:get/get.dart';
 
 class PinController extends GetxController {
-  final String correctPin = '1234';
+  var pin = ''.obs;
 
-  var enteredPin = ''.obs;
-
-  void updatePin(String pin) {
-    enteredPin.value = pin;
+  void updatePin(String value) {
+    pin.value = value;
   }
 
   bool isPinLengthValid() {
-    return enteredPin.value.length == 4;
-  }
-  bool isPinValid() {
-    return enteredPin.value == correctPin;
+    return pin.value.length == 6;
   }
 }
