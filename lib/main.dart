@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) => GetMaterialApp(
-        debugShowCheckedModeBanner: true,
+        debugShowCheckedModeBanner: false,
         title: 'AutoSync',
         initialRoute: appPages.initialRoute,
         getPages: appPages.routes,
