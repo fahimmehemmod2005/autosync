@@ -12,6 +12,10 @@ abstract class Routes {
   static const emailvrificationScreen = _Paths.emailvrificationScreen;
   static const mainScreen = _Paths.mainScreen;
   static const notificationScreen = _Paths.notificationScreen;
+  static const registerScreen = _Paths.registerScreen;
+  static const myaiScreen = _Paths.myaiScreen;
+  static const mygarageScreen = _Paths.mygarageScreen;
+  static const addunitScreen = _Paths.addunitScreen;
 
 }
 
@@ -27,4 +31,8 @@ abstract class _Paths {
   static const emailvrificationScreen = '/emailvrification_screen';
   static const mainScreen = '/main_screen';
   static const notificationScreen = '/notification_screen';
+  static const registerScreen = '/register_screen';
+  static const myaiScreen = '/myai_screen';
+  static const mygarageScreen = '/mygarageScreen';
+  static const addunitScreen = '/addunitScreen';
 }

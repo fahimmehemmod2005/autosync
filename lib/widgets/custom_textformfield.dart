@@ -13,6 +13,8 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffix;
   final Widget? prefix;
   final void Function(String)? onChanged;
+  final Color? borderColor;
+  final int? maxLines;
 
   const CustomTextFormField({
     Key? key,
@@ -26,6 +28,8 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     this.prefix,
     this.suffix,
+    this.borderColor,
+    this.maxLines = 1,
   }) : super(key: key);
 
   @override
@@ -35,6 +39,8 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText,
       validator: validator,
       onChanged: onChanged,
+      maxLines: maxLines, 
+      textAlignVertical: TextAlignVertical.top,
       decoration: InputDecoration(
         labelText: label,
         labelStyle: GoogleFonts.inter(
@@ -45,8 +51,8 @@ class CustomTextFormField extends StatelessWidget {
         hintText: hintText,
         hintStyle: GoogleFonts.inter(
           fontWeight: FontWeight.w500,
-          fontSize: 15.sp,
-          color: const Color(0xff1D1E20),
+          fontSize: 13.sp,
+          color: borderColor ?? Color(0xff8F959E),
         ),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
@@ -56,7 +62,7 @@ class CustomTextFormField extends StatelessWidget {
         // ✅ Added grey border styles below
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
-          borderSide: const BorderSide(
+          borderSide: BorderSide(
             color: Color(0xffD1D1D6), // light grey color
             width: 1.0,
           ),

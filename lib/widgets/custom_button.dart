@@ -16,7 +16,7 @@ class CustomButton extends StatelessWidget {
     this.onpress,
     this.color = const Color(0xff030712),
     this.borderRadius = 8,
-    this.height = 48,
+    this.height = 48 ,
     this.width = double.infinity,
   }) : super(key: key);
 

@@ -58,8 +58,6 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                           length: 6,
                           onChanged: (value) {
                             pinController.updatePin(value);
-
-                            // hide error message if input becomes valid
                             if (pinController.isPinLengthValid()) {
                               showError.value = false;
                             }
@@ -145,7 +143,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                           showError.value = true;
                           return;
                         } else if (_formKey.currentState!.validate()) {
-                          Get.toNamed('/login_screen');
+                          Get.toNamed('/register_screen');
                           Get.snackbar(
                             "Success",
                             "Login successfully!",

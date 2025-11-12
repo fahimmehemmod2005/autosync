@@ -1,4 +1,8 @@
+import 'package:autosync/app/models/home/bottomNavigatonPages/addunit.dart';
+import 'package:autosync/app/models/home/bottomNavigatonPages/my_ai.dart';
+import 'package:autosync/app/models/home/bottomNavigatonPages/mygarage.dart';
 import 'package:autosync/app/models/home/main_screen.dart';
+import 'package:autosync/app/models/onboarding/register.dart';
 import 'package:autosync/app/models/splash%20&%20Login%20Authentication/auth/email_verification.dart';
 import 'package:autosync/app/models/splash%20&%20Login%20Authentication/auth/forgot%20screen/forgot_screen.dart';
 import 'package:autosync/app/models/splash%20&%20Login%20Authentication/auth/forgot%20screen/otp_screen.dart';
@@ -25,5 +29,9 @@ class appPages {
     GetPage(name: _Paths.emailvrificationScreen, page: () => EmailVerificationScreen()),
     GetPage(name: _Paths.mainScreen, page: () => MainScreen()),
     GetPage(name: _Paths.notificationScreen, page: () => NotificationScreen()),   
+    GetPage(name: _Paths.registerScreen, page: () => RegisterScreen()), 
+    GetPage(name: _Paths.myaiScreen, page: () => MyAiScreen()),
+    GetPage(name: _Paths.mygarageScreen, page: () => MyGarageScreen()),
+    GetPage(name: _Paths.addunitScreen, page: () => AddunitScreen()),
   ];
 }

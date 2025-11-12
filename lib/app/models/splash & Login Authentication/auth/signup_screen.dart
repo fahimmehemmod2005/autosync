@@ -213,6 +213,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                     ),
                     SizedBox(height: 15.h),
+                     Text(
+                      'Date of Birth',
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12.sp,
+                        color: const Color(0xff4B5563),
+                      ),
+                    ),
                     BirthdayPickerField(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -303,9 +311,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         }
                       },
                     ),
+                    SizedBox(height: 55,),
                   ],
                 ),
               ),
+              
             ],
           ),
         ),

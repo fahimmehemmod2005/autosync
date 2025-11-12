@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // for DateFormat
 
 class BirthdayPickerField extends StatefulWidget {
-  final FormFieldValidator<String>? validator; // ✅ Optional validator
+  final FormFieldValidator<String>? validator;
 
   const BirthdayPickerField({
     Key? key,
@@ -36,18 +36,31 @@ class _BirthdayPickerFieldState extends State<BirthdayPickerField> {
     return TextFormField(
       controller: _controller,
       readOnly: true,
-      validator: widget.validator, 
+      validator: widget.validator,
       decoration: InputDecoration(
-        // labelText: 'Birthday',
+        filled: true,
+        fillColor: const Color(0xffD1D1D6), // ✅ background color
         hintText: 'dd/mm/yyyy',
         suffixIcon: IconButton(
-          icon: const Icon(Icons.calendar_today_outlined),
+          icon: const Icon(Icons.calendar_today_outlined, color: Color(0xff030712)),
           onPressed: () => _selectDate(context),
         ),
-        border: OutlineInputBorder(
+        enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Color(0xffD1D1D6)), // ✅ border color
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Color(0xffD1D1D6)), // ✅ same color when focused
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Colors.red),
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 12,
+          vertical: 14,
+        ),
       ),
       onTap: () => _selectDate(context),
     );

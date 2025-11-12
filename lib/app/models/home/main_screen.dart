@@ -36,7 +36,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: screens[selectedIndex],
       bottomNavigationBar: SizedBox(
-        height: 100.h,
+        height: 102.h,
         child: BottomNavigationBar(
           selectedFontSize: 12.sp,
           fixedColor: Color(0xffFFFFFF),

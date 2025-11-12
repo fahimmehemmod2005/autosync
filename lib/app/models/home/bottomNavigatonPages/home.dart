@@ -51,9 +51,15 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 22.h),
 
             // 🔹 Top banner images
-            InkWell(onTap: () {}, child: Image.asset('assets/images/ai.png')),
+            GestureDetector(
+              onTap: () => Get.toNamed('/myai_screen'),
+              child: Image.asset('assets/images/ai.png'),
+            ),
             SizedBox(height: 16.h),
-            InkWell(onTap: () {}, child: Image.asset('assets/images/my.png')),
+            InkWell(
+              onTap: () => Get.toNamed('/mygarageScreen'),
+              child: Image.asset('assets/images/my.png'),
+            ),
 
             SizedBox(height: 20.h),
             Text(
