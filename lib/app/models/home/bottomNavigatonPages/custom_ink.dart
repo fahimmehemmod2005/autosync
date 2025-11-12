@@ -12,7 +12,7 @@ final Widget? child;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: ontap,
     child: child);
   }

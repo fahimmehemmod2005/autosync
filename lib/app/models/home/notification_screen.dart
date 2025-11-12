@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:autosync/widgets/NotificationController.dart';
-import 'package:autosync/widgets/NotificationCard.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
@@ -12,7 +9,6 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
-  final controller = Get.put(NotificationController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +25,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
             fontWeight: FontWeight.w600,
             color: const Color(0xff030712),
           ),
-        ),
-      ),
-      body: Obx(
-        () => ListView.builder(
-          padding: const EdgeInsets.all(16),
-          itemCount: controller.notifications.length,
-          itemBuilder: (context, index) {
-            final notif = controller.notifications[index];
-            return NotificationCard(notif: notif, index: index);
-          },
         ),
       ),
     );

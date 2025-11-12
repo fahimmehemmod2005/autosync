@@ -1,10 +1,9 @@
 import 'package:autosync/app/models/home/bottomNavigatonPages/custom_ink.dart';
 import 'package:autosync/app/models/home/bottomNavigatonPages/custom_text.dart';
-import 'package:autosync/app/models/home/custom_card.dart';
 import 'package:autosync/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: SizedBox(),
+        leading: const SizedBox(),
         elevation: 0,
         actions: [
           SizedBox(width: 16.w),
@@ -37,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: const Color(0xff4B5563),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           InkWell(
             onTap: () => Get.toNamed('/notification_screen'),
             child: Image.asset('assets/icons/frame1.png'),
@@ -50,9 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           children: [
             SizedBox(height: 22.h),
+
+            // 🔹 Top banner images
             InkWell(onTap: () {}, child: Image.asset('assets/images/ai.png')),
             SizedBox(height: 16.h),
             InkWell(onTap: () {}, child: Image.asset('assets/images/my.png')),
+
             SizedBox(height: 20.h),
             Text(
               'Our Dealerships',
@@ -63,13 +65,168 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(height: 12.h),
-            Card(
-              child: ListView.separated(
-              separatorBuilder: (_, index) => SizedBox(height: 10.h,),
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: 5,
-                itemBuilder: (_, index) => CustomCard(),
+
+            /// ------------------- Custom Card Section ------------------- ///
+            SizedBox(
+              height: 258.h,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                color: const Color(0xffE5E7EB),
+                child: Column(
+                  children: [
+                    SizedBox(height: 10.h),
+
+                    // 🔹 Inner card with logo
+                    SizedBox(
+                      height: 84.h,
+                      width: 310.w,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        color: const Color(0xffD1D5DB),
+                        child: Center(
+                          child: Image.asset(
+                            'assets/images/bmw.png',
+                            height: 44.h,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 10.h),
+
+                    // 🔹 Icon row
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CustomInk(
+                          ontap: () {},
+                          child: SvgPicture.asset('assets/icons/call.svg'),
+                        ),
+                        CustomInk(
+                          ontap: () {},
+                          child: SvgPicture.asset('assets/icons/chat.svg'),
+                        ),
+                        CustomInk(
+                          ontap: () {},
+                          child: SvgPicture.asset('assets/icons/loc.svg'),
+                        ),
+                        CustomInk(
+                          ontap: () {},
+                          child: SvgPicture.asset('assets/icons/team.svg'),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: 10.h),
+
+                    // 🔹 Text row
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        CustomText(text: 'Call'),
+                        CustomText(text: 'Chat'),
+                        CustomText(text: 'Location'),
+                        CustomText(text: 'Team'),
+                      ],
+                    ),
+
+                    SizedBox(height: 15.h),
+
+                    // 🔹 Review button
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      child: CustomButton(
+                        text: 'Leave a Review',
+                        onpress: () {},
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 258.h,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                color: const Color(0xffE5E7EB),
+                child: Column(
+                  children: [
+                    SizedBox(height: 10.h),
+
+                    // 🔹 Inner card with logo
+                    SizedBox(
+                      height: 84.h,
+                      width: 310.w,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        color: const Color(0xffD1D5DB),
+                        child: Center(
+                          child: Image.asset(
+                            'assets/images/triu.png',
+                            height: 44.h,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 10.h),
+
+                    // 🔹 Icon row
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CustomInk(
+                          ontap: () {},
+                          child: SvgPicture.asset('assets/icons/call.svg'),
+                        ),
+                        CustomInk(
+                          ontap: () {},
+                          child: SvgPicture.asset('assets/icons/chat.svg'),
+                        ),
+                        CustomInk(
+                          ontap: () {},
+                          child: SvgPicture.asset('assets/icons/loc.svg'),
+                        ),
+                        CustomInk(
+                          ontap: () {},
+                          child: SvgPicture.asset('assets/icons/team.svg'),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: 10.h),
+
+                    // 🔹 Text row
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        CustomText(text: 'Call'),
+                        CustomText(text: 'Chat'),
+                        CustomText(text: 'Location'),
+                        CustomText(text: 'Team'),
+                      ],
+                    ),
+
+                    SizedBox(height: 15.h),
+
+                    // 🔹 Review button
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      child: CustomButton(
+                        text: 'Leave a Review',
+                        onpress: () {},
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
