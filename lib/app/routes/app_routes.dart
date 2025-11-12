@@ -11,6 +11,7 @@ abstract class Routes {
   static const resetpassScreen = _Paths.resetpassScreen;
   static const emailvrificationScreen = _Paths.emailvrificationScreen;
   static const mainScreen = _Paths.mainScreen;
+  static const notificationScreen = _Paths.notificationScreen;
 
 }
 
@@ -24,6 +25,6 @@ abstract class _Paths {
   static const otpScreen = '/otp_screen';
   static const resetpassScreen = '/resetpass_screen';
   static const emailvrificationScreen = '/emailvrification_screen';
-  static const mainScreen = '/main_screen'; 
-
+  static const mainScreen = '/main_screen';
+  static const notificationScreen = '/notification_screen';
 }

@@ -7,6 +7,7 @@ import 'package:autosync/app/models/splash%20&%20Login%20Authentication/auth/log
 import 'package:autosync/app/models/splash%20&%20Login%20Authentication/auth/signup_screen.dart';
 import 'package:autosync/app/models/splash%20&%20Login%20Authentication/splash_screen.dart';
 import 'package:get/get.dart';
+import '../models/home/notification_screen.dart';
 part 'app_routes.dart';
 
 class appPages {
@@ -22,6 +23,7 @@ class appPages {
     GetPage(name: _Paths.otpScreen, page: () => OtpScreen()),
     GetPage(name: _Paths.resetpassScreen, page: () => ResetpassScreen()),
     GetPage(name: _Paths.emailvrificationScreen, page: () => EmailVerificationScreen()),
-    GetPage(name: _Paths.mainScreen, page: () => MainScreen()),   
+    GetPage(name: _Paths.mainScreen, page: () => MainScreen()),
+    GetPage(name: _Paths.notificationScreen, page: () => NotificationScreen()),   
   ];
 }
