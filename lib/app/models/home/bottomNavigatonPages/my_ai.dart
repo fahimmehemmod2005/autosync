@@ -319,7 +319,7 @@ class _MyAiScreenState extends State<MyAiScreen> {
                 color: const Color(0xff374151),
               ),
             ),
-            onTap: () => Navigator.pop(context),
+            onTap: () {},
           ),
           ListTile(
             leading: Image.asset('assets/icons/edit.png', height: 24.h),
@@ -331,7 +331,7 @@ class _MyAiScreenState extends State<MyAiScreen> {
                 color: const Color(0xff374151),
               ),
             ),
-            onTap: () => Navigator.pop(context),
+            onTap: (){}
           ),
         ],
       ),

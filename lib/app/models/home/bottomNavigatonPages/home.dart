@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(width: 16.w),
           InkWell(
             onTap: () {},
-            child: Image.asset('assets/images/profile.png', height: 36.h),
+            child: Image.asset('assets/images/profile2.png', height: 36.h),
           ),
           SizedBox(width: 5.w),
           Text(
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const Spacer(),
           InkWell(
             onTap: () => Get.toNamed('/notification_screen'),
-            child: Image.asset('assets/icons/frame1.png'),
+            child: Image.asset('assets/icons/bell-notification.png',height: 24.h,),
           ),
           SizedBox(width: 16.w),
         ],
